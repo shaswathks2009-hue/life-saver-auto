@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Life Saver — Automatic Traffic Alert Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="brand-mark">✚</div>
+    <div><h1>Life Saver</h1><p>Emergency response • automatic traffic-screen alert demo</p></div>
+    <span class="demo-pill">DEMO</span>
+  </header>
+
+  <main>
+    <section class="notice">
+      <strong>Prototype mode</strong>
+      <p>This version automatically triggers alerts in a simulated route. It does not contact a real ambulance, hospital, traffic signal, or roadside screen.</p>
+    </section>
+
+    <section class="card">
+      <div class="section-heading"><span class="step">1</span><div><h2>Ambulance trip</h2><p>Start a demo trip to automatically alert approaching junction displays.</p></div></div>
+      <div class="status-row"><span class="dot" id="tripDot"></span><span id="tripStatus">Trip not started</span></div>
+      <div class="button-row">
+        <button id="startBtn" class="primary">Start ambulance trip</button>
+        <button id="stopBtn" class="secondary" disabled>Stop trip</button>
+      </div>
+      <div class="progress-wrap"><div id="progressBar"></div></div>
+      <div class="trip-meta"><span>Route progress</span><strong id="progressText">0%</strong></div>
+      <p class="small" id="locationText">Demo GPS: waiting for trip start</p>
+    </section>
+
+    <section class="card">
+      <div class="section-heading"><span class="step">2</span><div><h2>Automatic junction detection</h2><p>The system checks the ambulance's route and triggers an alert when it enters a junction's warning zone.</p></div></div>
+      <div id="junctionList" class="junction-list"></div>
+    </section>
+
+    <section class="card screen-card">
+      <div class="section-heading"><span class="step">3</span><div><h2>Roadside display preview</h2><p>This screen changes automatically when the demo ambulance approaches a junction.</p></div></div>
+      <div class="roadside-screen" id="roadsideScreen">
+        <div class="screen-label">TRAFFIC INFORMATION DISPLAY</div>
+        <div class="screen-icon">🚑</div>
+        <div class="screen-message" id="screenMessage">NO ACTIVE ALERT</div>
+        <div class="screen-sub" id="screenSub">Waiting for ambulance route event</div>
+      </div>
+      <button id="clearBtn" class="secondary full">Clear demo alert</button>
+    </section>
+
+    <section class="card">
+      <div class="section-heading"><span class="step">4</span><div><h2>Activity log</h2><p>Automatic events are recorded here.</p></div></div>
+      <ul id="activityLog" class="activity-log"><li>Demo ready. Start a trip to test automatic alerts.</li></ul>
+    </section>
+
+    <section class="card">
+      <div class="section-heading"><span class="step">5</span><div><h2>Patient condition</h2><p>Example form for a nurse in the ambulance.</p></div></div>
+      <label for="condition">Patient status</label>
+      <select id="condition">
+        <option>Stable</option><option>Needs urgent attention</option><option>Critical</option>
+      </select>
+      <label for="notes">Notes for hospital</label>
+      <textarea id="notes" rows="3" placeholder="Enter demo patient notes"></textarea>
+      <button id="savePatientBtn" class="primary full">Save demo patient update</button>
+    </section>
+
+    <footer>
+      <p><strong>For a real deployment:</strong> add authenticated ambulance GPS, a backend server, route/map matching, registered roadside display devices, acknowledgements, alert expiry, and approval from the local traffic authority. This demo must not be connected to traffic-light controls.</p>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
